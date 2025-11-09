@@ -1,0 +1,5 @@
+{
+  "name": "Copy of Supabase Student Management System",
+  "description": "A comprehensive student management system built with React, TypeScript, and Tailwind CSS, integrated with a Supabase backend. It allows for tracking student information, absences, and disciplinary actions with role-based access for different user types.",
+  "requestFramePermissions": []
+}
