@@ -1,8 +1,15 @@
 import { createClient } from '@supabase/supabase-js';
 import { Student, Absence, Action } from '../types';
 
-const SUPABASE_URL = 'https://vpirofwthtbvxfcqmjps.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZwaXJvZnd0aHRidnhmY3FtanBzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI2MjUzOTIsImV4cCI6MjA3ODIwMTM5Mn0.V-X9EMwxeoWysj3EB_OfP2unNoah874rhxFOEvoN3Sw';
+const SUPABASE_URL = process.env.SUPABASE_URL;
+const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
+
+if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
+  // This will prevent the app from running and show a clear error in the developer console.
+  // This is a common cause for a "white screen" on deployment if the environment variables are not set.
+  // To fix this, you need to set SUPABASE_URL and SUPABASE_ANON_KEY in your hosting environment.
+  throw new Error("Supabase credentials are not configured. Please set SUPABASE_URL and SUPABASE_ANON_KEY environment variables.");
+}
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
